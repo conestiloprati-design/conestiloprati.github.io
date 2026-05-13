@@ -38,41 +38,33 @@ header{
 
 .categoria{
 
-  width:100%;
-  
   display:flex;
+
+  flex-wrap:wrap;
 
   justify-content:center;
 
-  flex-wrap:wrap;
-  
   gap:20px;
 
   padding:30px;
-
-  cursor:pointer;
-
-  font-size:16px;
 }
 
 
 .categoria{
 
-  width:280px;
-
   background:white;
 
-  border-radius:20px;
+  width:260px;
+
+  border-radius:15px;
 
   overflow:hidden;
 
   text-align:center;
 
-  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
-  cursor:pointer;
-
-  font-size:16px;
+  padding-bottom:20px;
 }
 
 
@@ -83,30 +75,20 @@ header{
   height:250px;
 
   object-fit:cover;
-
-  cursor:pointer;
-
-  font-size:16px;
 }
 
 
-.categoria button{
+.categoria h2{
 
-  background:#25D366;
+  margin-top:15px;
+}
 
-  color:white;
 
-  border:none;
+.categoria p{
 
-  padding:12px 25px;
+  font-size:22px;
 
-  border-radius:10px;
-
-  margin-bottom:20px;
-
-  cursor:pointer;
-
-  font-size:16px;
+  color:green;
 }
 
 
