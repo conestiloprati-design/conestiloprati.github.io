@@ -38,12 +38,14 @@ header{
 
 .categoria{
 
+  width:100%;
+  
   display:flex;
-
-  flex-wrap:wrap;
 
   justify-content:center;
 
+  flex-wrap:wrap;
+  
   gap:20px;
 
   padding:30px;
@@ -63,14 +65,6 @@ header{
   text-align:center;
 
   box-shadow:0 4px 15px rgba(0,0,0,0.3);
-
-  transition:0.3s;
-}
-
-
-.categoria:hover{
-
-  transform:scale(1.05);
 }
 
 
@@ -81,14 +75,6 @@ header{
   height:250px;
 
   object-fit:cover;
-}
-
-
-.categoria h2{
-
-  margin:20px 0;
-
-  font-size:28px;
 }
 
 
