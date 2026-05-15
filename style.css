@@ -105,11 +105,14 @@ body{
 /* TEXTOS */
 
 .producto h2,
-.categoria h2{
-
-    font-size:16px;
-
-    margin:10px 0;
+.categoriah2 {
+    display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
 }
 
 .producto p{
