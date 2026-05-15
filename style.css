@@ -70,9 +70,9 @@ header{
 
 .producto img{
 
-  width:50%;
+  width:40%;
 
-  height:50px;
+  height:40px;
 
   object-fit:cover;
 }
