@@ -70,9 +70,9 @@ header{
 
 .producto img{
 
-  width:45%;
+  width:48%;
 
-  height:45px;
+  height:48px;
 
   object-fit:cover;
 }
@@ -100,7 +100,7 @@ button{
 
   border:none;
 
-  padding:12px 15px;
+  padding:6px 10px;
 
   border-radius:8px;
 
