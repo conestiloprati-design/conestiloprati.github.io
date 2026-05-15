@@ -1,103 +1,58 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background-image:url('imagenes/fondo.jpg');
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;}
+    background:#f2f2f2;}
 
 
 /* HEADER */
 .banner{
-    background:rgba(0,0,0,0.7);
+    background:#111;
     color:white;
     text-align:center;
-    padding:30px 15px;}
+    padding:25px;}
 .logo{
-    width:100px;
-    border-radius:50%;
-    margin-bottom:10px;}
-.banner h1{
-    margin:10px 0;
-    font-size:35px;}
+    width:90px;
+    border-radius:50%;}
 
 
 /* TITULOS */
-h1{
+.titulo{
     text-align:center;
-    color:white;}
+    margin-top:30px;
+    color:#111;}
 
 
-/* PRODUCTOS DESTACADOS */
-.contenedor-productos{
+/* PRODUCTOS Y CATEGORIAS */
+.contenedor-productos,.categorias{
     display:grid;
-    grid-template-columns:    repeat(auto-fit,minmax(180px,1fr));
-    gap:20px;
-    padding:25px;
-    justify-content:center;}
+    grid-template-columns:    repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
+    padding:20px;}
 
 
-/* PRODUCTOS */
-.producto{
+/* TARJETAS */
+.producto,.categoria{
     background:white;
-    border-radius:18px;
+    border-radius:15px;
     overflow:hidden;
     text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,0.3);
-    padding-bottom:15px;
-    transition:0.3s;}
-.producto:hover{
-    transform:scale(1.03);}
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    padding-bottom:15px;}
 
 
-/* IMAGEN PRODUCTO */
-.producto img{
+/* IMAGENES */
+.producto img,.categoria img{
     width:100%;
-    height:180px;
+    height:140px;
     object-fit:cover;}
 
 
-/* TEXTO PRODUCTO */
-.producto h2{
-    font-size:20px;
-    margin:12px 0;}
+/* TEXTOS */
+.producto h2,.categoria h2{
+    font-size:18px;
+    margin:10px 0;}
 .producto p{
-    font-size:18px;}
-
-
-/* CATEGORÍAS */
-.categorias{
-    display:grid;
-    grid-template-columns:    repeat(auto-fit,minmax(180px,1fr));
-    gap:20px;
-    padding:25px;
-    justify-content:center;}
-
-
-/* TARJETAS CATEGORÍAS */
-.categoria{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,0.3);
-    padding-bottom:15px;
-    transition:0.3s;}
-.categoria:hover{
-    transform:scale(1.03);}
-
-
-/* IMAGEN CATEGORÍA */
-.categoria img{
-    width:100%;
-    height:180px;
-    object-fit:cover;}
-
-
-/* TITULO CATEGORÍA */
-.categoria h2{
-    font-size:22px;
-    margin:15px 0;}
+    font-size:16px;}
 
 
 /* BOTONES */
@@ -105,69 +60,15 @@ button{
     background:#25D366;
     color:white;
     border:none;
-    padding:10px 18px;
-    border-radius:10px;
+    padding:8px 14px;
+    border-radius:8px;
     cursor:pointer;
-    font-size:15px;
-    transition:0.3s;}
-button:hover{
-    background:#1ebe5d;
-    transform:scale(1.05);}
-
-
-/* DISPONIBLE */
-.disponible{
-    color:green;
-    font-weight:bold;}
-
-
-/* AGOTADO */
-.agotado{
-    color:red;
-    font-weight:bold;}
-
-
-/* BOTÓN DESACTIVADO */
-button:disabled{
-    background:gray;
-    cursor:not-allowed;}
-
-
-/* MAPA */
-.mapa{
-    text-align:center;
-    padding:30px 20px;}
-.mapa iframe{
-    width:95%;
-    height:300px;
-    border:none;
-    border-radius:20px;}
-
-
-/* REDES */
-.redes{
-    text-align:center;
-    padding:30px 20px;}
-.sociales{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;}
-.sociales a{
-    background:white;
-    color:black;
-    text-decoration:none;
-    padding:12px 18px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;}
-.sociales a:hover{
-    transform:scale(1.05);}
+    font-size:14px;}
 
 
 /* FOOTER */
 footer{
-    background:rgba(0,0,0,0.7);
+    background:#111;
     color:white;
     text-align:center;
     padding:20px;
@@ -176,8 +77,6 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:600px){
-    .banner h1{
-        font-size:28px;    }
-    .producto img,    .categoria img{
-        height:150px;    }
+    .contenedor-productos,    .categorias{
+        grid-template-columns:        repeat(auto-fit,minmax(140px,1fr));    }
 }
