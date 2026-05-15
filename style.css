@@ -54,7 +54,7 @@ header{
 
   background:white;
 
-  width:260px;
+  width:100px;
 
   border-radius:15px;
 
@@ -64,7 +64,7 @@ header{
 
   box-shadow:0 4px 10px rgba(0,0,0,0.3);
 
-  padding-bottom:20px;
+  padding-bottom:5px;
 }
 
 
@@ -72,7 +72,7 @@ header{
 
   width:100%;
 
-  height:250px;
+  height:100px;
 
   object-fit:cover;
 }
