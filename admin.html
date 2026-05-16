@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin - Co'n Estilo</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    background: #f5f5f5;
+}
+
+.admin-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.admin-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-form {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.admin-form input,
+.admin-form select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.admin-form button {
+    background: #ff3f6c;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.admin-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.admin-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.admin-card-content {
+    padding: 15px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-delete {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-box {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="admin-container">
+
+<div class="admin-top">
+<h1>Panel Administrador</h1>
+</div>
+
+<input type="text" id="buscar" class="search-box" placeholder="Buscar productos...">
+
+<select id="filtroCategoria" class="search-box">
+<option value="">Todas las categorías</option>
+<option value="zapatos">Zapatos</option>
+<option value="ropa">Ropa</option>
+<option value="accesorios">Accesorios</option>
+</select>
+
+<div class="admin-form">
+<h2>Agregar Producto</h2>
+
+<input type="text" id="nombre" placeholder="Nombre del producto">
+<input type="text" id="precio" placeholder="Precio">
+<input type="text" id="imagen" placeholder="URL de imagen">
+
+<select id="categoria">
+<option value="zapatos">Zapatos</option>
+<option value="ropa">Ropa</option>
+<option value="accesorios">Accesorios</option>
+</select>
+
+<label>
+<input type="checkbox" id="oferta">
+Producto en oferta
+</label>
+
+<button onclick="agregarProducto()">Guardar Producto</button>
+</div>
+
+<div class="admin-grid" id="productosAdmin"></div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://firebase.google.com/docs/web/setup#available-libraries";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+updateDoc
+} from "https://firebase.google.com/docs/web/setup#available-libraries";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAz-C_gm39oIgew0mJQP-tkY9UXZmKEa6I",
+  authDomain: "co-n-estilo.firebaseapp.com",
+  projectId: "co-n-estilo",
+  storageBucket: "co-n-estilo.firebasestorage.app",
+  messagingSenderId: "236826729557",
+  appId: "1:236826729557:web:b9d96a57686fca1970c8dc"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const productosAdmin = document.getElementById('productosAdmin');
+
+async function cargarProductos() {
+
+productosAdmin.innerHTML = '';
+
+const querySnapshot = await getDocs(collection(db, 'productos'));
+
+querySnapshot.forEach((docItem) => {
+
+const producto = docItem.data();
+
+productosAdmin.innerHTML += `
+<div class="admin-card">
+<img src="${producto.imagen}">
+<div class="admin-card-content">
+<h3>${producto.nombre}</h3>
+<p>$${producto.precio}</p>
+<p>${producto.categoria}</p>
+${producto.oferta ? '<p>🔥 Oferta</p>' : ''}
+<div class="admin-actions">
+<button class="btn-edit" onclick="editarProducto('${docItem.id}')">Editar</button>
+<button class="btn-delete" onclick="eliminarProducto('${docItem.id}')">Eliminar</button>
+</div>
+</div>
+</div>
+`;
+
+});
+
+}
+
+window.agregarProducto = async function() {
+
+const nombre = document.getElementById('nombre').value;
+const precio = document.getElementById('precio').value;
+const imagen = document.getElementById('imagen').value;
+const categoria = document.getElementById('categoria').value;
+const oferta = document.getElementById('oferta').checked;
+
+await addDoc(collection(db, 'productos'), {
+nombre,
+precio,
+imagen,
+categoria,
+oferta
+});
+
+alert('Producto agregado');
+
+cargarProductos();
+
+}
+
+window.eliminarProducto = async function(id) {
+
+await deleteDoc(doc(db, 'productos', id));
+
+cargarProductos();
+
+}
+
+window.editarProducto = async function(id) {
+
+const nuevoPrecio = prompt('Nuevo precio');
+
+if(nuevoPrecio){
+
+await updateDoc(doc(db, 'productos', id), {
+precio: nuevoPrecio
+});
+
+cargarProductos();
+
+}
+
+}
+
+const buscar = document.getElementById('buscar');
+
+buscar.addEventListener('keyup', () => {
+
+const texto = buscar.value.toLowerCase();
+
+const cards = document.querySelectorAll('.admin-card');
+
+cards.forEach(card => {
+
+const nombre = card.innerText.toLowerCase();
+
+card.style.display = nombre.includes(texto) ? 'block' : 'none';
+
+});
+
+});
+
+const filtroCategoria = document.getElementById('filtroCategoria');
+
+filtroCategoria.addEventListener('change', () => {
+
+const categoria = filtroCategoria.value.toLowerCase();
+
+const cards = document.querySelectorAll('.admin-card');
+
+cards.forEach(card => {
+
+if(categoria === '') {
+card.style.display = 'block';
+return;
+}
+
+card.style.display = card.innerText.toLowerCase().includes(categoria)
+? 'block'
+: 'none';
+
+});
+
+});
+
+cargarProductos();
+
+</script>
+
+</body>
+</html>
