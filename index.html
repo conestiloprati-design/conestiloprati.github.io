@@ -12,25 +12,51 @@
 
 import { initializeApp } from "https://firebase.google.com/docs/web/setup#available-libraries";
 
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://firebase.google.com/docs/web/setup#available-libraries";
+
 const firebaseConfig = {
-
   apiKey: "AIzaSyAz-C_gm39oIgew0mJQP-tkY9UXZmKEa6I",
-
   authDomain: "co-n-estilo.firebaseapp.com",
-
   projectId: "co-n-estilo",
-
   storageBucket: "co-n-estilo.firebasestorage.app",
-
   messagingSenderId: "236826729557",
-
   appId: "1:236826729557:web:b9d96a57686fca1970c8dc"
-
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-console.log("Firebase conectado");
+const contenedor = document.getElementById('productos');
+
+async function cargarProductos() {
+
+  contenedor.innerHTML = "";
+
+  const querySnapshot = await getDocs(collection(db, "productos"));
+
+  querySnapshot.forEach((doc) => {
+
+    const p = doc.data();
+
+    contenedor.innerHTML += `
+      <div class="producto-card">
+        <img src="${p.imagen}">
+        <h3>${p.nombre}</h3>
+        <p>$${p.precio}</p>
+        ${p.oferta ? '<p>🔥 Oferta</p>' : ''}
+        <button onclick="comprar('${p.nombre}')">Comprar</button>
+      </div>
+    `;
+
+  });
+
+}
+
+cargarProductos();
 
 </script>
     
