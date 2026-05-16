@@ -10,12 +10,12 @@ import {
 
 // 🔥 TU CONFIG FIREBASE
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_DOMINIO",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_BUCKET",
-  messagingSenderId: "TU_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyAz-C_gm39oIgew0mJQP-tkY9UXZmKEa6I",
+  authDomain: "co-n-estilo.firebaseapp.com",
+  projectId: "co-n-estilo",
+  storageBucket: "co-n-estilo.firebasestorage.app",
+  messagingSenderId: "236826729557",
+  appId: "1:236826729557:web:b9d96a57686fca1970c8dc"
 };
 
 const app = initializeApp(firebaseConfig);
