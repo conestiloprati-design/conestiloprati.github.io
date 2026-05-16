@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
+<script type="module">
 
-    <script type="module">
-
-import { initializeApp } from "https://firebase.google.com/docs/web/setup#available-libraries";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getFirestore,
   collection,
-  getDocs
-} from "https://firebase.google.com/docs/web/setup#available-libraries";
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAz-C_gm39oIgew0mJQP-tkY9UXZmKEa6I",
@@ -30,33 +33,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const contenedor = document.getElementById('productos');
+// PROBAR CONEXIÓN
+console.log("Firebase conectado correctamente");
 
-async function cargarProductos() {
-
-  contenedor.innerHTML = "";
-
-  const querySnapshot = await getDocs(collection(db, "productos"));
-
-  querySnapshot.forEach((doc) => {
-
-    const p = doc.data();
-
-    contenedor.innerHTML += `
-      <div class="producto-card">
-        <img src="${p.imagen}">
-        <h3>${p.nombre}</h3>
-        <p>$${p.precio}</p>
-        ${p.oferta ? '<p>🔥 Oferta</p>' : ''}
-        <button onclick="comprar('${p.nombre}')">Comprar</button>
-      </div>
-    `;
-
-  });
-
-}
-
-cargarProductos();
+</script>
 
 </script>
     
