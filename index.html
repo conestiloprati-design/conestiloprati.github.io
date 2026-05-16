@@ -7,34 +7,7 @@
     <link rel="stylesheet" href="style.css">
     
 </head>
-<script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc,
-  updateDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAz-C_gm39oIgew0mJQP-tkY9UXZmKEa6I",
-  authDomain: "co-n-estilo.firebaseapp.com",
-  projectId: "co-n-estilo",
-  storageBucket: "co-n-estilo.firebasestorage.app",
-  messagingSenderId: "236826729557",
-  appId: "1:236826729557:web:b9d96a57686fca1970c8dc"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// PROBAR CONEXIÓN
-console.log("Firebase conectado correctamente");
 
 </script>
 
@@ -87,7 +60,7 @@ console.log("Firebase conectado correctamente");
     <h2>Productos Destacados</h2>
 
     <div class="productos-grid">
-     id="productos"></div>
+    
         <div class="producto-card">
             <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop" alt="Zapatos deportivos">
             <h3>Zapatos Urban</h3>
@@ -133,11 +106,6 @@ console.log("Firebase conectado correctamente");
     </div>
 </section>
     
- <h2>Categorías</h2>
-<div id="categorias"></div>
-
-<h2>Productos</h2>
-<div id="productos"></div>   
 
 <footer id="redes">
     <h3>Co'n Estilo</h3>
