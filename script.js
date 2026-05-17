@@ -1,0 +1,28 @@
+function comprar(producto, precio) {
+
+    const numero = '5358231944';
+
+    const mensaje = `Hola, estoy interesado en comprar: ${producto}
+    $${precio}`;
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
