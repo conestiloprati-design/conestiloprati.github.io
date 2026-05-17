@@ -3,7 +3,7 @@ window.comprar = function(boton) {
     const card = boton.parentElement;
 
     const nombre = card.querySelector("h3").innerText;
-    const precio = card.querySelector("pag").innerText;
+    const precio = card.querySelector("p").innerText;
     const imagen = card.querySelector("img").src;
 
     const numero = '5358231944';
