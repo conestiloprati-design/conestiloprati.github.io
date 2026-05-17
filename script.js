@@ -1,4 +1,4 @@
-function comprar(producto) {
+function comprar(producto, precio) {
 
     const numero = '5358231944';
 
